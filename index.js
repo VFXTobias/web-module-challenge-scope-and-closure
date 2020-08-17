@@ -124,33 +124,29 @@ Final Score: awayTeam - homeTeam */
 
 
 function getInningScore(cb1,i) {
-  let team = [];
+  let scores = [];
   for (let b = 1; b <= i; b++) {
-    team.push(cb1());
+    scores.push(cb1());
   }
-  return(team);
+  return(scores);
 }
 
 
-function scoreboard(){
-  let home = getInningScore(inning, 9);
-  let away = getInningScore(inning, 9);
+function scoreboard(innings){
+  let home = getInningScore(inning, innings);
+  let away = getInningScore(inning, innings);
   let homeTotal = home.reduce(function(a,b){return a+b});
   let awayTotal = away.reduce(function (a,b) {return a+b });
+    
+  for(i=1; i<=innings; i++){
+      console.log(`Inning ${i} - Away: ${away[i-1]} Home: ${home[i-1]}`);
+    }
 
-  console.log(`1st Inning - Away: ${away[0]} Home: ${home[0]}`);
-  console.log(`2nd Inning - Away: ${away[1]} Home: ${home[1]}`);
-  console.log(`3rd Inning - Away: ${away[2]} Home: ${home[2]}`);
-  console.log(`4th Inning - Away: ${away[3]} Home: ${home[3]}`);
-  console.log(`5th Inning - Away: ${away[4]} Home: ${home[4]}`);
-  console.log(`6th Inning - Away: ${away[5]} Home: ${home[5]}`);
-  console.log(`7th Inning - Away: ${away[6]} Home: ${home[6]}`);
-  console.log(`8th Inning - Away: ${away[7]} Home: ${home[7]}`);
-  console.log(`9th Inning - Away: ${away[8]} Home: ${home[8]}`);
-  console.log(`Final Score - Away: ${awayTotal} Home: ${homeTotal}`);
-  
+    console.log(`Final Score - Away: ${awayTotal} Home: ${homeTotal}`);
+ 
 }
-scoreboard();
+
+scoreboard(9);
 
 
 
