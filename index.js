@@ -53,6 +53,7 @@ let count = 0;
 
 function counter2() {
   return count++;
+
 }
 
 
@@ -87,14 +88,19 @@ finalScore(inning, 9) might return:
 
 
 function finalScore(cb, i) {
+
   let home = 0;
   let away = 0;
 
   for (s = 1; s < i; s++) {
+
     home += cb();
-    away += cb();   
+    away += cb();
+
   }
+
   console.log(`Home: ${home}, Away: ${away}`);
+
 }
 
 finalScore(inning, 9);
@@ -124,9 +130,12 @@ Final Score: awayTeam - homeTeam */
 
 
 function getInningScore(cb1,i) {
+
   let scores = [];
   for (let b = 1; b <= i; b++) {
+
     scores.push(cb1());
+
   }
   return(scores);
 }
@@ -136,9 +145,10 @@ function scoreboard(innings){
   let home = getInningScore(inning, innings);
   let away = getInningScore(inning, innings);
   let homeTotal = home.reduce(function(a,b){return a+b});
-  let awayTotal = away.reduce(function (a,b) {return a+b });
+  let awayTotal = away.reduce(function(a,b){return a+b});
     
   for(i=1; i<=innings; i++){
+    
       console.log(`Inning ${i} - Away: ${away[i-1]} Home: ${home[i-1]}`);
     }
 
