@@ -27,10 +27,14 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ *    Counter1 utilizes closure whereas Counter2 is simply benefiting from scope.
  * 
  * 2. Which of the two uses a closure? How can you tell?
+*     Counter1.  It returns a function inside of it that also returns.
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ *    Counter1 is preferrable when you want to keep variables private and protected.  Counter 2 is better when you might want to provide access for mutation of the required variables.
+ * 
  *
 */
 
@@ -56,11 +60,15 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning(){
 
-    /*Code Here*/
+    let score = (Math.floor(Math.random()*3));
+    return score;
 
 }
+
+console.log(inning());
+
 
 /* Task 3: finalScore()
 
@@ -76,11 +84,21 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
 
-  /*Code Here*/
 
+function finalScore(cb, i) {
+  let home = 0;
+  let away = 0;
+
+  for (s = 1; s < i; s++) {
+    home += cb();
+    away += cb();   
+  }
+  console.log(`Home: ${home}, Away: ${away}`);
 }
+
+finalScore(inning, 9);
+
 
 /* Task 4: 
 
@@ -103,8 +121,37 @@ and returns the score at each pont in the game, like so:
 Final Score: awayTeam - homeTeam */
 
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+
+
+function getInningScore(cb1,i) {
+  let team = [];
+  for (let b = 1; b <= i; b++) {
+    team.push(cb1());
+  }
+  return(team);
 }
+
+
+function scoreboard(){
+  let home = getInningScore(inning, 9);
+  let away = getInningScore(inning, 9);
+  let homeTotal = home.reduce(function(a,b){return a+b});
+  let awayTotal = away.reduce(function (a, b) { return a + b });
+
+  console.log(`1st Inning - Away: ${away[0]} Home: ${home[0]}`);
+  console.log(`2nd Inning - Away: ${away[1]} Home: ${home[1]}`);
+  console.log(`3rd Inning - Away: ${away[2]} Home: ${home[2]}`);
+  console.log(`4th Inning - Away: ${away[3]} Home: ${home[3]}`);
+  console.log(`5th Inning - Away: ${away[4]} Home: ${home[4]}`);
+  console.log(`6th Inning - Away: ${away[5]} Home: ${home[5]}`);
+  console.log(`7th Inning - Away: ${away[6]} Home: ${home[6]}`);
+  console.log(`8th Inning - Away: ${away[7]} Home: ${home[7]}`);
+  console.log(`9th Inning - Away: ${away[8]} Home: ${home[8]}`);
+  console.log(`Final Score - Away: ${awayTotal} Home: ${homeTotal}`);
+  
+}
+scoreboard();
+
+
 
 
