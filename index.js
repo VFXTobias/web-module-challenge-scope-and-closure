@@ -136,7 +136,7 @@ function scoreboard(){
   let home = getInningScore(inning, 9);
   let away = getInningScore(inning, 9);
   let homeTotal = home.reduce(function(a,b){return a+b});
-  let awayTotal = away.reduce(function (a, b) { return a + b });
+  let awayTotal = away.reduce(function (a,b) {return a+b });
 
   console.log(`1st Inning - Away: ${away[0]} Home: ${home[0]}`);
   console.log(`2nd Inning - Away: ${away[1]} Home: ${home[1]}`);
