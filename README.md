@@ -42,6 +42,13 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+  Closure exists when an inner function makes use of variables declared in an outer function which has previously returned.
+
+  Closure does not exist if you do not return an inner function and if that inner function does not make use of variables returned by an outer function.
+
+  We can use closures to create private variables and write better code that isolates our logic and application.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +70,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+  Closure exists where personalDice is utilizing a return from a nested function. It's passing 'name' into the scope of its nested function which returns a result back to the parent function.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+  personalDice function call is always the same.  You could technically change the parameter value passed into personalDice.
+
 c. What is the lexical scope of `newRoll`? 
+
+  It is the child of personalDice as it is nested within.
 
 ### Task 2c - Exit Ticket
 
